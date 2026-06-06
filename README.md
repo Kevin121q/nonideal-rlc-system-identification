@@ -37,8 +37,8 @@ Equipment:
 - FNIRSI 5012H Oscilloscope
 - Breadboard
 - Resistors
-- Inductor
-- Polyester Capacitor
+- Inductors
+- Polyester Capacitors
 
 ---
 
