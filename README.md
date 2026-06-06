@@ -1,18 +1,82 @@
-# Data
+# Non-Ideal RLC System Identification
 
-This directory contains all experimental datasets used in the project.
+Experimental and computational analysis of a non-ideal series RLC circuit using frequency-response measurements, parameter estimation, and system-identification techniques.
 
-## Structure
+---
 
-### raw/
-Original measurements exported directly from experiments.
+## Overview
 
-### cleaned/
-Validated datasets with formatting corrections and flagged anomalies.
+This project investigates how accurately hidden parameters and non-ideal behavior in a damped RLC circuit can be reconstructed from experimental frequency-response measurements.
 
-### processed/
-Derived datasets containing extracted metrics such as resonance frequency, peak gain, bandwidth, Q-factor, and parameter estimates.
+A physical series RLC circuit was built and measured using a signal generator and oscilloscope. The resulting datasets are analyzed using Python to compare ideal and non-ideal models, study damping effects, quantify source loading, and explore the limits of parameter reconstruction.
 
-## Notes
+---
 
-Raw datasets are never modified. All processing steps should be reproducible from the original measurements.
+## Research Questions
+
+- How does damping affect resonance behavior?
+- How strongly does source loading distort measurements?
+- Which circuit parameters can be reconstructed reliably?
+- When does reconstruction become ambiguous?
+
+---
+
+## Experimental Setup
+
+Circuit:
+
+Generator → L → C → R → Ground
+
+Measured quantity:
+
+Gain = VR / Vs
+
+Equipment:
+
+- FY6900 Signal Generator
+- FNIRSI 5012H Oscilloscope
+- Breadboard
+- Resistors
+- Inductor
+- Polyester Capacitor
+
+---
+
+## Current Progress
+
+Completed:
+
+- Baseline R = 100Ω dataset
+- Multi-resistance sweep dataset
+- Gain analysis
+- Resonance analysis
+- Bandwidth and Q-factor analysis
+- Source-loading investigation
+
+In Progress:
+
+- Hidden resistance estimation
+- Non-ideal model fitting
+- Parameter reconstruction
+- Identifiability analysis
+
+---
+
+## Repository Structure
+
+(To be completed)
+
+---
+
+## Results
+
+(To be completed)
+
+---
+
+## Future Work
+
+- Non-ideal parameter estimation
+- Reconstruction error analysis
+- Identifiability studies
+- Educational notebooks
