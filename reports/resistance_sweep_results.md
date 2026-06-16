@@ -55,7 +55,7 @@ Measurement outputs:
 - VR
 - Gain
 
-![Peak gain vs resistance](figures/resistance_sweep1/peak_gain_vs_resistance1.png)
+![Peak gain vs resistance](../figures/resistance_sweep1/peak_gain_vs_resistance1.png)
 
  ## Key Observations
 
