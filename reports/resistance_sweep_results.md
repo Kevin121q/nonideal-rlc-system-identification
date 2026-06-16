@@ -55,7 +55,7 @@ Measurement outputs:
 - VR
 - Gain
 
- ![Resistance Sweep](../figures/resistance_sweep/resistance_sweep_gain_curves.png)
+ ![Resistance Sweep](figures/resistance_sweep1/resistance_sweep_gain_curves1.png)
 
  ## Key Observations
 
