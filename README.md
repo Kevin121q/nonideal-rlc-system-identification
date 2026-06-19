@@ -155,7 +155,7 @@ Completed analyses include:
 * Two-dimensional RMSE maps for R_hidden–C_eff
 * 5% and 10% RMSE-threshold uncertainty intervals
 
-[Identifiability](figures/identifiability/rmse_2d/LC_heatmap_R_150ohm.png)
+![Identifiability](figures/identifiability/rmse_2d/LC_heatmap_R_150ohm.png)
 
 Key findings:
 
