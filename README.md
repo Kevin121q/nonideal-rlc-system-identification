@@ -111,7 +111,7 @@ One of the most significant non-ideal effects observed in the experiment is sour
 
 The measured source voltage varies with both frequency and resistance, particularly for low-resistance configurations near resonance.
 
-[INSERT SOURCE LOADING FIGURE HERE]
+![Source loading](figures/experimental/source_loading/source_loading_resistance_sweep1.png)
 
 This behavior demonstrates that the signal generator cannot be modeled as an ideal voltage source and motivates the use of non-ideal circuit models.
 
@@ -155,7 +155,7 @@ Completed analyses include:
 * Two-dimensional RMSE maps for R_hidden–C_eff
 * 5% and 10% RMSE-threshold uncertainty intervals
 
-[INSERT IDENTIFIABILITY FIGURE HERE]
+[LC RMSE map](figures/identifiability/rmse_2d/LC_heatmap_R_150ohm.png)
 
 Key findings:
 
