@@ -10,7 +10,11 @@ This project studies how hidden parameters and non-ideal behavior in a damped RL
 
 A physical series RLC circuit was built and tested using a signal generator and oscilloscope. The measured frequency-response data are analyzed using Python to compare ideal and non-ideal models, estimate effective circuit parameters, study damping and source-loading effects, and investigate when parameter reconstruction becomes ambiguous.
 
-The project focuses on the difference between fitting a model well and correctly identifying the physical parameters of the system. A low fitting error does not automatically mean that the recovered parameters are physically true; it only means that the model reproduces the measured response well. This distinction is central to the project.
+The project focuses on the difference between fitting a model well and correctly identifying the physical parameters of the system. A low fitting error does not automatically mean that the recovered parameters are physically true; it only means that the model reproduces the measured response well.
+
+This distinction is central to the project.
+
+The project combines experimental measurements, model fitting, and inverse-problem analysis to investigate both reconstruction accuracy and parameter identifiability.
 
 ---
 
@@ -22,10 +26,10 @@ How accurately can hidden parameters of a non-ideal RLC circuit be reconstructed
 
 ## Experimental System
 
-The circuit topology is:
+Circuit topology:
 
 ```text
-Signal generator → Inductor → Capacitor → Resistor → Ground
+Signal Generator → Inductor → Capacitor → Resistor → Ground
 ```
 
 The measured output is the voltage across the resistor.
@@ -33,9 +37,9 @@ The measured output is the voltage across the resistor.
 Measured quantities:
 
 * Frequency
-* Source voltage `Vs`
-* Resistor voltage `VR`
-* Gain, calculated as `Gain = VR / Vs`
+* Source voltage (Vs)
+* Resistor voltage (VR)
+* Gain = VR / Vs
 
 Equipment:
 
@@ -43,8 +47,8 @@ Equipment:
 * FNIRSI 5012H oscilloscope
 * Breadboard
 * Resistors
-* Inductor
-* Polyester capacitor
+* 10 mH inductor
+* 220 nF polyester capacitor
 
 ---
 
@@ -54,8 +58,8 @@ The project follows a complete experimental and computational workflow:
 
 1. Collect frequency-response measurements across multiple resistance conditions.
 2. Clean and validate the experimental data.
-3. Plot resonance curves and source-loading behavior.
-4. Fit a non-ideal RLC transfer-function model to the measured gain curves.
+3. Analyze resonance behavior and source-loading effects.
+4. Fit a non-ideal RLC transfer-function model to measured gain curves.
 5. Estimate effective hidden resistance, inductance, and capacitance.
 6. Evaluate reconstruction quality using residuals and RMSE.
 7. Analyze practical identifiability using one-dimensional and two-dimensional RMSE landscapes.
@@ -73,68 +77,96 @@ R_total = R_measured + R_hidden
 
 The fitted parameters are:
 
-* `R_hidden`
-* `L_eff`
-* `C_eff`
+* R_hidden
+* L_eff
+* C_eff
 
-These are interpreted as effective parameters, not guaranteed direct physical measurements of individual components.
+These quantities are interpreted as effective parameters rather than guaranteed direct measurements of individual physical components.
 
 ---
 
-## Results
+# Results and Findings
 
-### Experimental Results
+## Experimental Characterization
 
-The resistance sweep shows that damping strongly changes the measured frequency response.
+The resistance sweep demonstrates that damping strongly influences the measured frequency response.
 
 Observed behavior:
 
 * Peak gain increases with measured resistance.
-* Low-resistance configurations show stronger source-loading effects.
+* Low-resistance configurations exhibit stronger source-loading effects.
 * High-resistance curves become flatter and less sharply resonant.
 * Resonance frequency remains comparatively stable while gain and bandwidth change significantly.
 * Ideal RLC assumptions are insufficient because the measured source voltage is not constant.
 
-### Parameter Reconstruction
+![Resistance sweep gain curves](../figures/experimental/resistance_sweeps/resistance_sweep_gain_curves.png)
 
-A non-ideal RLC model was fitted to experimental gain curves. For each resistance condition, the fitting process estimated:
+The gain curves reveal substantial changes in resonance behavior across resistance conditions and provide the experimental foundation for all subsequent reconstruction analyses.
 
-* hidden resistance
-* effective inductance
-* effective capacitance
-* reconstructed resonance frequency
+---
+
+## Source Loading
+
+One of the most significant non-ideal effects observed in the experiment is source loading.
+
+The measured source voltage varies with both frequency and resistance, particularly for low-resistance configurations near resonance.
+
+[INSERT SOURCE LOADING FIGURE HERE]
+
+This behavior demonstrates that the signal generator cannot be modeled as an ideal voltage source and motivates the use of non-ideal circuit models.
+
+---
+
+## Parameter Reconstruction
+
+A non-ideal RLC model was fitted to experimental gain curves.
+
+For each resistance condition, the fitting process estimated:
+
+* Hidden resistance
+* Effective inductance
+* Effective capacitance
+* Reconstructed resonance frequency
 * RMSE
 
-Example reconstructed parameters:
+Representative reconstructed parameters:
 
-| Measured Resistance | R_hidden |      L_eff |    C_eff |
-| ------------------: | -------: | ---------: | -------: |
-|                22 Ω | ≈ 34.5 Ω | ≈ 10.69 mH | ≈ 242 nF |
-|               150 Ω |   ≈ 62 Ω | ≈ 12.86 mH | ≈ 201 nF |
-|               470 Ω | ≈ 35.5 Ω | ≈ 10.63 mH |≈ 235,5 nF|
+| Measured Resistance | R_hidden |      L_eff |      C_eff |
+| ------------------: | -------: | ---------: | ---------: |
+|                22 Ω | ≈ 34.5 Ω | ≈ 10.69 mH |   ≈ 242 nF |
+|               150 Ω |   ≈ 62 Ω | ≈ 12.86 mH |   ≈ 201 nF |
+|               470 Ω | ≈ 35.5 Ω | ≈ 10.63 mH | ≈ 235.5 nF |
 
-The model fits the measured curves well, but the recovered parameters drift systematically across resistance conditions.
+The model reproduces the measured gain curves with low error across all resistance conditions.
 
-### Identifiability Analysis
+However, the recovered parameters drift systematically across experiments despite similar reconstruction quality.
+
+---
+
+## Identifiability Analysis
 
 Practical identifiability was studied using RMSE sweeps and RMSE maps.
 
 Completed analyses include:
 
-* 1D RMSE sweeps for `R_hidden`, `L_eff`, and `C_eff`
-* 2D RMSE maps for `L_eff-C_eff`
-* 2D RMSE maps for `R_hidden-L_eff`
-* 2D RMSE maps for `R_hidden-C_eff`
+* One-dimensional RMSE sweeps for R_hidden, L_eff, and C_eff
+* Two-dimensional RMSE maps for L_eff–C_eff
+* Two-dimensional RMSE maps for R_hidden–L_eff
+* Two-dimensional RMSE maps for R_hidden–C_eff
 * 5% and 10% RMSE-threshold uncertainty intervals
+
+[INSERT IDENTIFIABILITY FIGURE HERE]
 
 Key findings:
 
 * Parameters are practically identifiable within individual experiments.
 * Uncertainty intervals are relatively small.
-* The product `L_eff × C_eff` remains nearly constant.
+* The product L_eff × C_eff remains nearly constant.
 * Reconstructed resonance frequency remains within approximately 2% of its mean value.
-* `L_eff` and `C_eff` show a strong tradeoff relationship.
+* L_eff and C_eff exhibit a strong tradeoff relationship.
 * Hidden resistance likely compensates for unmodeled physical effects.
+
+These results suggest that reconstruction is locally stable while still exhibiting parameter correlations characteristic of inverse problems.
 
 ---
 
@@ -144,14 +176,16 @@ The parameter drift is likely caused by model mismatch.
 
 The simplified model combines several physical effects into a small number of effective parameters. Possible unmodeled effects include:
 
-* source impedance
-* inductor winding resistance
-* capacitor ESR
-* breadboard parasitics
-* frequency-dependent losses
-* measurement limitations
+* Source impedance
+* Inductor winding resistance
+* Capacitor ESR
+* Breadboard parasitics
+* Frequency-dependent losses
+* Measurement limitations
 
-Therefore, the reconstructed values should be interpreted as effective model parameters rather than direct measurements of the true physical component values. This distinction motivates the use of identifiability analysis, since accurate curve fitting alone is insufficient evidence that a parameter estimate corresponds uniquely to the underlying physical system.
+Therefore, the reconstructed values should be interpreted as effective model parameters rather than direct measurements of the true physical component values.
+
+This distinction motivates the use of identifiability analysis, since accurate curve fitting alone is insufficient evidence that a parameter estimate corresponds uniquely to the underlying physical system.
 
 ---
 
@@ -169,22 +203,22 @@ figures/
 └── identifiability/      RMSE sweeps, RMSE maps, uncertainty bounds
 
 notebooks/                Exploratory and reproducible analyses
-reports/                  Written technical summaries
+reports/                  Technical summaries
 src/                      Reusable Python modules
-scripts/                  Executable analysis scripts
-docs/                     Experimental setup, theory, and methodology
+scripts/                  Analysis scripts
+docs/                     Theory, methodology, and supporting documentation
 ```
 
 ---
 
 ## Current Status
 
-Completed:
+### Completed
 
 * Experimental series RLC circuit construction
 * Frequency-response measurements
 * Multiple resistance sweep datasets
-* Data cleaning
+* Data cleaning and validation
 * Repeatability analysis
 * Source-loading analysis
 * Non-ideal model fitting
@@ -193,7 +227,7 @@ Completed:
 * Practical identifiability analysis
 * Uncertainty interval estimation
 
-In progress:
+### In Progress
 
 * Improved model interpretation
 * Sensitivity analysis
@@ -204,17 +238,27 @@ In progress:
 
 ## Future Work
 
-Planned extensions:
+Planned extensions include:
+
+### Modeling
+
+* Source impedance modeling
+* Capacitor ESR modeling
+* Inductor winding-resistance modeling
+* Improved non-ideal transfer-function models
+
+### Inverse Problems
 
 * Sensitivity analysis
 * Parameter correlation analysis
-* Monte Carlo uncertainty propagation
-* Source impedance modeling
-* Capacitor ESR modeling
-* Inductor winding resistance modeling
 * Structural identifiability analysis
-* Practical identifiability under noise
-* Improved non-ideal transfer-function models
+* Practical identifiability under measurement noise
+
+### Uncertainty Quantification
+
+* Monte Carlo uncertainty propagation
+* Confidence interval estimation
+* Noise robustness analysis
 
 ---
 
@@ -222,12 +266,14 @@ Planned extensions:
 
 This repository is intended to serve as:
 
-- a reproducible experimental RLC dataset,
-- an example of system-identification workflows,
-- an introduction to practical identifiability analysis,
-- a resource for students interested in modeling real-world dynamical systems.
+* A reproducible experimental RLC dataset
+* An example of a system-identification workflow
+* An introduction to practical identifiability analysis
+* A resource for students interested in modeling real-world dynamical systems
 
 All data, figures, and analysis workflows are provided openly to encourage reproducibility and further exploration.
+
+---
 
 ## License
 
