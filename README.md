@@ -99,7 +99,7 @@ Observed behavior:
 * Resonance frequency remains comparatively stable while gain and bandwidth change significantly.
 * Ideal RLC assumptions are insufficient because the measured source voltage is not constant.
 
-![Resistance sweep gain curves](../figures/experimental/resistance_sweeps/resistance_sweep_gain_curves.png)
+![Resistance sweep gain curves](figures/experimental/resistance_sweeps/resistance_sweep_gain_curves.png)
 
 The gain curves reveal substantial changes in resonance behavior across resistance conditions and provide the experimental foundation for all subsequent reconstruction analyses.
 
