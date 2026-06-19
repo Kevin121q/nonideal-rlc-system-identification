@@ -111,7 +111,7 @@ Example reconstructed parameters:
 | ------------------: | -------: | ---------: | -------: |
 |                22 Ω | ≈ 34.5 Ω | ≈ 10.69 mH | ≈ 242 nF |
 |               150 Ω |   ≈ 62 Ω | ≈ 12.86 mH | ≈ 201 nF |
-|               510 Ω |   ≈ 34 Ω | ≈ 11.41 mH | ≈ 229 nF |
+|               470 Ω | ≈ 35.4 Ω | ≈ 11.41 mH | ≈ 229 nF |
 
 The model fits the measured curves well, but the recovered parameters drift systematically across resistance conditions.
 
