@@ -46,7 +46,7 @@ Representative reconstruction results include:
 | ------------------: | -------: | ---------: | -------: |
 |                22 Ω | ≈ 34.5 Ω | ≈ 10.69 mH | ≈ 242 nF |
 |               150 Ω |   ≈ 62 Ω | ≈ 12.86 mH | ≈ 201 nF |
-|               470 Ω |   ≈ 34 Ω | ≈ 11.41 mH | ≈ 229 nF |
+|               470 Ω | ≈ 35.5 Ω | ≈ 10.63 mH |≈235.5 nF |
 
 Figures showing fitted curves, residuals, and reconstructed parameters are available in the reconstruction figure directory.
 
