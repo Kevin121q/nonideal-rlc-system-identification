@@ -17,14 +17,12 @@ A series RLC circuit was constructed using a signal generator, inductor, capacit
 For each resistance condition, the excitation frequency was swept across the resonance region while the following quantities were recorded:
 
 * Frequency
-* Source voltage, (V_S)
-* Resistor voltage, (V_R)
+* Source voltage, (Vs)
+* Resistor voltage, (VR)
 
 The measured gain was calculated as:
 
-[
-\text{Gain} = \frac{V_R}{V_S}
-]
+Gain = VR / Vs
 
 Measurements were performed for resistor values ranging from 22 Ω to 470 Ω.
 
