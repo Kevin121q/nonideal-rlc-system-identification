@@ -81,7 +81,7 @@ These are interpreted as effective parameters, not guaranteed direct physical me
 
 ---
 
-## Current Results
+## Results
 
 ### Experimental Results
 
@@ -151,7 +151,7 @@ The simplified model combines several physical effects into a small number of ef
 * frequency-dependent losses
 * measurement limitations
 
-Therefore, the reconstructed values should be interpreted as effective model parameters rather than direct measurements of the true physical component values.
+Therefore, the reconstructed values should be interpreted as effective model parameters rather than direct measurements of the true physical component values. This distinction motivates the use of identifiability analysis, since accurate curve fitting alone is insufficient evidence that a parameter estimate corresponds uniquely to the underlying physical system.
 
 ---
 
@@ -217,6 +217,17 @@ Planned extensions:
 * Improved non-ideal transfer-function models
 
 ---
+
+## Educational Value
+
+This repository is intended to serve as:
+
+- a reproducible experimental RLC dataset,
+- an example of system-identification workflows,
+- an introduction to practical identifiability analysis,
+- a resource for students interested in modeling real-world dynamical systems.
+
+All data, figures, and analysis workflows are provided openly to encourage reproducibility and further exploration.
 
 ## License
 
